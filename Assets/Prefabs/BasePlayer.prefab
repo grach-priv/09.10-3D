@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4202091268360197799}
   - component: {fileID: 6756869457681946405}
   - component: {fileID: 8554223556766589662}
+  - component: {fileID: 4488761403046118553}
   m_Layer: 0
   m_Name: BasePlayer
   m_TagString: Untagged
@@ -118,7 +119,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 20000
   m_Drag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 0.1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -150,6 +151,32 @@ MonoBehaviour:
   m_flSpeed: 5
   m_flSensitivity: 2
   m_Camera: {fileID: 8889955968609857053}
+--- !u!143 &4488761403046118553
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5293752900391229289}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8248585654117267901
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,12 +289,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   volumeAnchorOverride: {fileID: 0}
-  antialiasing: 0
+  antialiasing: 3
   SMAAQuality: 2
-  dithering: 0
+  dithering: 1
   stopNaNs: 0
   taaSharpenStrength: 0.5
-  TAAQuality: 1
+  TAAQuality: 2
   taaHistorySharpening: 0.35
   taaAntiFlicker: 0.5
   taaMotionVectorRejection: 0

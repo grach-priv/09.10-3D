@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class BasePlayer : MonoBehaviour
 {
@@ -24,10 +25,16 @@ public class BasePlayer : MonoBehaviour
     {
         Vector3 vecVelocity = Vector3.zero;
 
-        vecVelocity.z = Input.GetAxisRaw("Vertical") * m_flSpeed;
+#if FALSE
+        vecVelocity.z = ( Input.GetAxisRaw("Vertical") * m_Camera.transform.forward ) * m_flSpeed;
         vecVelocity.x = Input.GetAxisRaw("Horizontal") * m_flSpeed;
+#else
+        vecVelocity = m_Camera.transform.forward * Input.GetAxisRaw( "Vertical" ) + m_Camera.transform.right * Input.GetAxisRaw( "Horizontal" );
+        vecVelocity.z *= m_flSpeed;
+        vecVelocity.x *= m_flSpeed;
+#endif
         m_Rb.velocity = vecVelocity;
-
+         
         float flMx = ( Input.GetAxis( "Mouse X" ) * m_flSensitivity );
 
         //m_Rb.transform.Rotate(0, flMx, 0);
