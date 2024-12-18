@@ -1,17 +1,29 @@
 using JetBrains.Rider.Unity.Editor;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class BasePlayer : MonoBehaviour
 {
+    private int m_iScore = 0;
+
     [SerializeField] private float m_flSpeed;
     [SerializeField] private float m_flSensitivity;
     [SerializeField] private Camera m_Camera;
+    [SerializeField] private TMP_Text m_ScoreText;
+    // [SerializeField] private AudioSource m_WalkSource;
 
     private Rigidbody m_Rb;
+    public AudioSource m_WallHitAudioSource;
+
+    public void IncrementScore( int i )
+    {
+        m_iScore += i;
+        m_ScoreText.text = "Punkty: " + m_iScore.ToString();
+    }
 
     private void Start()
     {
@@ -19,6 +31,7 @@ public class BasePlayer : MonoBehaviour
         Cursor.visible = false;
 
         m_Rb = GetComponent<Rigidbody>();
+        m_WallHitAudioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
